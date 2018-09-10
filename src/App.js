@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Search from './components/Search'
 
 class App extends Component {
     constructor(props){
@@ -33,6 +34,7 @@ class App extends Component {
         return (
             <div className="App">
                 {JSON.stringify(this.state.location)}
+                <Search />
             </div>
         );
     }
