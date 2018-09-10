@@ -24,10 +24,10 @@ function checkStatus(response) {
     throw error;
 }
 
-export function forecast(city) {
+export function forecast(query) {
     const newQ = {
         appid: API.CLIENT_ID,
-        q: city
+        ...query
     };
     return fetch(withQuery(`${API.URL}/forecast`, newQ))
         .then(checkStatus)

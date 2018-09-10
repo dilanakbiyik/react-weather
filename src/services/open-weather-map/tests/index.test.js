@@ -6,8 +6,19 @@ import { forecast } from '../open-weather-map.services';
 
 describe('open-weather-map', () => {
     describe('stubbing successful response', () => {
-        it('should format the response correctly', (done) => {
-            forecast('Amsterdam')
+        it('should load city response correctly', (done) => {
+            forecast({ q: 'Amsterdam'})
+                .catch((error) => done(error))
+                .then((json) => {
+                    expect(json.cod).toBe('200');
+                    expect(json.list).toBeDefined();
+                    expect(json.list.length).toBeGreaterThan(0);
+                    done();
+                });
+        });
+
+        it('should load forecast with location response correctly', (done) => {
+            forecast({ lat: 52.4127431, lon: 4.6547142})
                 .catch((error) => done(error))
                 .then((json) => {
                     expect(json.cod).toBe('200');
