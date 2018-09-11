@@ -1,3 +1,7 @@
+## Live
+
+https://react-openweathermap.herokuapp.com/
+
 ## Quick start
 
 1. Clone or unzip this repo
