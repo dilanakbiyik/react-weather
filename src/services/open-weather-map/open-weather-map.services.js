@@ -27,6 +27,7 @@ function checkStatus(response) {
 export function forecast(query) {
     const newQ = {
         appid: API.CLIENT_ID,
+        units: 'metric',
         ...query
     };
     return fetch(withQuery(`${API.URL}/forecast`, newQ))
