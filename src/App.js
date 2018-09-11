@@ -96,15 +96,21 @@ class App extends Component {
 
     render() {
         const { days } = this.state;
+        let emptyHeaders = null;
+        if(days.length > 0){
+            emptyHeaders = (
+                <div className="hours-area">
+                    <div className="hour-head"></div>
+                    {this.loadHours()}
+                </div>
+            )
+        }
         const _days = Object.keys(days);
         return (
             <div className="App">
                 <Search search={this.searchCity}/>
                 {this.loadCityInfo()}
-                <div className="hours-area">
-                    <div className="hour-head"></div>
-                    {this.loadHours()}
-                </div>
+                {emptyHeaders}
                 <div className="days-area">
                     {_days.map((day) => <DayWeather key={day} day={day} hours={days[day].data} timestamp={days[day].timestamp} />)}
                 </div>

@@ -4,7 +4,7 @@ const withQuery = require('with-query').default;
 
 const API = {
     CLIENT_ID: '57a97a2f8a68d2c084cfcba975612cb5',
-    URL: 'http://api.openweathermap.org/data/2.5/'
+    URL: 'https://api.openweathermap.org/data/2.5/'
 };
 
 function parseJSON(response) {
