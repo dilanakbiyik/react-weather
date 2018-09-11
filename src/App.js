@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Search from './components/Search'
+import DayWeather from './components/DayWeather'
 import { forecast } from './services/open-weather-map/open-weather-map.services'
 
 class App extends Component {
@@ -74,12 +75,16 @@ class App extends Component {
 
     render() {
         const { days } = this.state;
+        const _days = Object.keys(days);
         return (
             <div className="App">
                 <Search />
                 <div className="hours-area">
                     <div className="hour-head"></div>
                     {this.loadHours()}
+                </div>
+                <div className="days-area">
+                    {_days.map((day) => <DayWeather key={day} day={day} hours={days[day].data} />)}
                 </div>
             </div>
         );
