@@ -1,0 +1,11 @@
+.hours-area{
+    display: flex;
+    flex-direction: row;
+}
+
+.hours-area .hour-head{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
