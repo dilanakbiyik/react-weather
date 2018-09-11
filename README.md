@@ -10,6 +10,16 @@
 Run `yarn test` to test components.
 Run `yarn coverage` to create tests with coverage.
 
+## Screenshoots
+
+### Desktop View
+
+![Desktop view](https://raw.githubusercontent.com/dilanakbiyik/react-weather/master/screen1.PNG)
+
+### Mobile View
+
+![Desktop view](https://raw.githubusercontent.com/dilanakbiyik/react-weather/master/screen2.PNG)
+
 ## License
 
 MIT license
