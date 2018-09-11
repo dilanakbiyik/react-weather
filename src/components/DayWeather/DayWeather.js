@@ -5,13 +5,6 @@ const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
 
 class DayWeather extends React.Component {
 
-    constructor(props){
-        super(props);
-    }
-    componentWillMount(){
-        this.setState({})
-    }
-
     loadEmpty(emptyArray){
         return emptyArray.map((val) => <div key={'empty' + val} className="hour-head no-data">No data</div>);
     }

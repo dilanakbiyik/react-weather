@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdSearch, MdMyLocation } from 'react-icons/md';
+import { MdSearch } from 'react-icons/md';
 import './style.css';
 
 class Search extends React.Component { // eslint-disable-line react/prefer-stateless-function
