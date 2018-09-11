@@ -7,6 +7,7 @@ class Search extends React.Component { // eslint-disable-line react/prefer-state
     constructor(props){
         super(props);
         this.onChangeSearch = this.onChangeSearch.bind(this);
+        this.onSubmitForm = this.onSubmitForm.bind(this);
     }
     componentWillMount(){
         this.setState({
@@ -14,8 +15,9 @@ class Search extends React.Component { // eslint-disable-line react/prefer-state
         })
     }
 
-    onSubmitForm(){
-        alert("here");
+    onSubmitForm(e){
+        e.preventDefault();
+        this.props.search(this.state.search);
     }
 
     onChangeSearch(event){

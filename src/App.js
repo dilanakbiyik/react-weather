@@ -7,20 +7,24 @@ import { forecast } from './services/open-weather-map/open-weather-map.services'
 class App extends Component {
     constructor(props){
         super(props);
-    }
-
-    componentWillMount() {
-        this.setState({
-            error: false,
-            days: []
-        })
+        this.state = { days:[], error: false, searchParam:null }
+        this.searchCity = this.searchCity.bind(this);
     }
 
     componentDidMount(){
-        this.checkLocation();
+        if(!this.state.searchParam){
+            this.checkLocation();
+        }
     }
 
-    loadForecast(query) {
+    searchCity(city){
+        this.loadForecast({
+            q: city,
+            city
+        });
+    }
+
+    loadForecast(query, searchParam) {
         forecast(query)
             .then((result) => {
                 let days = {};
@@ -38,7 +42,7 @@ class App extends Component {
                     }
                     days[dateName].data[hourIndex] = hourInfo;
                 });
-                this.setState({ days })
+                this.setState({ days, searchParam })
             })
             .catch((error) => this.setState({ error : true }))
     }
@@ -78,7 +82,7 @@ class App extends Component {
         const _days = Object.keys(days);
         return (
             <div className="App">
-                <Search />
+                <Search search={this.searchCity}/>
                 <div className="hours-area">
                     <div className="hour-head"></div>
                     {this.loadHours()}
