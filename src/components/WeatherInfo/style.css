@@ -4,3 +4,11 @@
     align-items: center;
     justify-content: center;
 }
+.WeatherInfo .temp{
+    font-size: 18px;
+    font-weight: bold;
+}
+.WeatherInfo span{
+    margin-bottom: 8px;
+    font-size: 13px;
+}

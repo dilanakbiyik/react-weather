@@ -3,12 +3,14 @@ import './App.css';
 import Search from './components/Search'
 import DayWeather from './components/DayWeather'
 import { forecast } from './services/open-weather-map/open-weather-map.services'
-
+import { MdMyLocation } from 'react-icons/md'
 class App extends Component {
     constructor(props){
         super(props);
-        this.state = { days:[], error: false, searchParam:null }
+        this.state = { days:[], error: false, searchParam:null, city: null };
         this.searchCity = this.searchCity.bind(this);
+        this.loadCityInfo = this.loadCityInfo.bind(this);
+        this.checkLocation = this.checkLocation.bind(this);
     }
 
     componentDidMount(){
@@ -37,12 +39,13 @@ class App extends Component {
 
                     }else{
                         days[dateName] = {
-                            data: {}
+                            data: {},
+                            timestamp: hourInfo.dt_txt
                         }
                     }
                     days[dateName].data[hourIndex] = hourInfo;
                 });
-                this.setState({ days, searchParam })
+                this.setState({ days, searchParam,city: result.city })
             })
             .catch((error) => this.setState({ error : true }))
     }
@@ -50,8 +53,8 @@ class App extends Component {
     loadHours(){
         const hours = [0,1,2,3,4,5,6,7];
         const result = hours.map((val) =>
-            <div className="hour-head" key={'hours-head' + val}>
-                <span>{this.getHourValue(val)}</span>
+            <div className="hours-initial hour-head" key={'hours-head' + val}>
+                <span className="hour">{this.getHourValue(val)}</span>
             </div>
         );
         return result;
@@ -77,18 +80,33 @@ class App extends Component {
         }
     }
 
+    loadCityInfo(){
+        const {city} = this.state;
+        if(city){
+            return (
+                <div className="city-info-area">
+                    <div className="city-info">
+                        <MdMyLocation size={25} onClick={this.checkLocation} />
+                        <span>{city.name}</span>
+                    </div>
+                </div>
+            )
+        }
+    }
+
     render() {
         const { days } = this.state;
         const _days = Object.keys(days);
         return (
             <div className="App">
                 <Search search={this.searchCity}/>
+                {this.loadCityInfo()}
                 <div className="hours-area">
                     <div className="hour-head"></div>
                     {this.loadHours()}
                 </div>
                 <div className="days-area">
-                    {_days.map((day) => <DayWeather key={day} day={day} hours={days[day].data} />)}
+                    {_days.map((day) => <DayWeather key={day} day={day} hours={days[day].data} timestamp={days[day].timestamp} />)}
                 </div>
             </div>
         );

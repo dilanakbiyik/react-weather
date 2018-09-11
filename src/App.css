@@ -1,3 +1,7 @@
+.hours-initial{
+    margin-top: 16px;
+}
+
 .hours-area{
     display: flex;
     flex-direction: row;
@@ -8,4 +12,74 @@
     align-items: center;
     justify-content: center;
     flex: 1;
+    flex-direction: column;
+}
+
+.hours-area .hour-head.no-data{
+    color: grey;
+}
+
+.days-area .hours-area .hour-head .day{
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.hours-area .hour-head .hour{
+    font-weight: bold;
+}
+
+.city-info-area{
+    padding: 8px;
+}
+.city-info-area .city-info{
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.city-info-area .city-info span{
+    margin-left: 8px;
+}
+
+.city-info-area .city-info svg{
+    fill: rgba(210, 108, 34,1);
+    cursor: pointer;
+}
+
+.date-small{
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .hours-area{
+        display: none;
+    }
+    .date-small{
+        display: block;
+        border: 1px solid rgba(210, 108, 34,1);
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 4px;
+        margin-top: 8px;
+    }
+
+    .hours-area .hour-head.no-data{
+        display: none;
+    }
+
+    .DayWeather{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .DayWeather .hour-head{
+        border-bottom: 1px solid rgba(210, 108, 34,1);
+    }
+
+    .DayWeather .hour-head:last-child,.DayWeather .hour-head:first-child{
+        border: none;
+    }
 }

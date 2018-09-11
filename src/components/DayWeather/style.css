@@ -1,3 +1,7 @@
+.DayWeather-area{
+    padding: 8px;
+}
 .DayWeather{
-
+    padding: 8px;
+    box-shadow: 0 3px 6px rgba(210, 108, 34,0.16), 0 3px 6px rgba(210, 108, 34,0.23);
 }
