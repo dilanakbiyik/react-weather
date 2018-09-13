@@ -95,9 +95,11 @@ class App extends Component {
     }
 
     render() {
+
         const { days } = this.state;
+        const _days = Object.keys(days);
         let emptyHeaders = null;
-        if(days.length > 0){
+        if(_days.length > 0){
             emptyHeaders = (
                 <div className="hours-area">
                     <div className="hour-head"></div>
@@ -105,7 +107,6 @@ class App extends Component {
                 </div>
             )
         }
-        const _days = Object.keys(days);
         return (
             <div className="App">
                 <Search search={this.searchCity}/>
